@@ -1,18 +1,20 @@
-# Sadka (2010, JFE) Table III — closest-feasible replication
+# Sadka (2010, JFE) Table III — replication (current WRDS/LSEG TASS vintage)
 
 A clean, auditable replication of **Table III** of Ronnie Sadka, *"Liquidity risk and the
 cross-section of hedge-fund returns,"* **JFE 98 (2010)** — the time-series regressions of 11
 equal-weighted hedge-fund **style** portfolios on the Fung–Hsieh seven factors and the Sadka
 liquidity factor (Jan 1994 – Dec 2008).
 
-> **Framing (honest):** this is a **strong closest-feasible replication on the current WRDS/LSEG
-> TASS vintage**, *not* an exact reproduction of Sadka's 2009-era TASS sample. The sign pattern
-> and the qualitative red lines reproduce; magnitudes and sample counts differ, and every
-> difference is quantified (see `docs/memo_sadka_table3.tex` and `outputs/`).
+> **Framing (honest):** this is a **closest-feasible replication on the current WRDS/LSEG TASS
+> vintage**, *not* an exact reproduction of Sadka's 2009-era TASS sample. Several attempts were
+> made under different reasonable data choices; the version reported is the one that came closest.
+> The qualitative pattern is close; magnitudes and sample counts differ, and each difference is
+> quantified (see `docs/memo_sadka_table3.tex` and `outputs/`).
 
-## Headline result (Model 2 liquidity loading)
-- **All 11 liquidity signs match** the paper; six styles are clearly positive & significant.
-- **Dedicated Short Bias** liquidity is negative & insignificant (−0.14 [−0.5]); its market beta
+## Result (Model 2 liquidity loading)
+- **All 11 Model-2 liquidity-loading signs match** the paper; six styles are clearly positive and
+  significant at the 5% level, with a couple of additional styles close to the cutoff.
+- **Dedicated Short Bias** liquidity is negative and insignificant (−0.14 [−0.5]); its market beta
   is −0.88 (paper −0.97). Global Macro / Managed Futures are weak — as in the paper.
 - Convertible Arbitrage 0.76 [3.9] (paper 0.78 [4.2]); Event Driven 0.53 [3.0] (paper 0.53).
 
