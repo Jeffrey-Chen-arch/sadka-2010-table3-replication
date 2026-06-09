@@ -1,0 +1,52 @@
+canonical_styles:
+  - "Convertible Arbitrage"
+  - "Dedicated Short Bias"
+  - "Emerging Markets"
+  - "Equity Market Neutral"
+  - "Event Driven"
+  - "Fixed Income Arbitrage"
+  - "Fund of Funds"
+  - "Global Macro"
+  - "Long/Short Equity"
+  - "Managed Futures"
+  - "Multi-Strategy"
+
+default_variant: "strict_11_only"
+
+style_mapping_variants:
+
+  # MAIN. Only the exact canonical 11 TASS styles and simple spelling/punctuation
+  # variants. No granular sub-strategy folding. Use unless current Lipper/TASS
+  # categories are finer-grained, which would push the unmapped share over the
+  # threshold and trigger the expanded map (with an audit file).
+  strict_11_only:
+    description: "Exact canonical 11 + simple spelling variants only."
+    aliases:
+      "Convertible Arbitrage": ["Convertible Arbitrage", "Convertible Arb", "Convert Arb"]
+      "Dedicated Short Bias": ["Dedicated Short Bias", "Dedicated Short", "Short Bias"]
+      "Emerging Markets": ["Emerging Markets", "Emerging Market"]
+      "Equity Market Neutral": ["Equity Market Neutral", "Equity Mkt Neutral"]
+      "Event Driven": ["Event Driven", "Event-Driven"]
+      "Fixed Income Arbitrage": ["Fixed Income Arbitrage", "Fixed Income Arb", "Fixed-Income Arbitrage"]
+      "Fund of Funds": ["Fund of Funds", "Funds of Funds", "Fund-of-Funds", "FoF", "Fund of Hedge Funds"]
+      "Global Macro": ["Global Macro"]
+      "Long/Short Equity": ["Long/Short Equity", "Long Short Equity", "Long-Short Equity", "Long/Short Equity Hedge", "Equity Long/Short"]
+      "Managed Futures": ["Managed Futures", "Managed Futures (CTA)"]
+      "Multi-Strategy": ["Multi-Strategy", "Multi Strategy", "Multi-strategy"]
+
+  # DIAGNOSTIC / fallback. Maps finer current-Lipper sub-strategies into Sadka's 11
+  # broad styles. Requires outputs/tables/style_mapping_audit.csv to be inspected.
+  expanded_alias_map:
+    description: "Strict + granular Lipper sub-strategies folded into the broad 11."
+    aliases:
+      "Convertible Arbitrage": ["Convertible Arbitrage", "Convertible Arb", "Convert Arb"]
+      "Dedicated Short Bias": ["Dedicated Short Bias", "Dedicated Short", "Short Bias", "Short Selling"]
+      "Emerging Markets": ["Emerging Markets", "Emerging Market"]
+      "Equity Market Neutral": ["Equity Market Neutral", "Equity Mkt Neutral", "Market Neutral", "Equity Neutral"]
+      "Event Driven": ["Event Driven", "Event-Driven", "Distressed", "Distressed Securities", "Merger Arbitrage", "Risk Arbitrage", "Special Situations"]
+      "Fixed Income Arbitrage": ["Fixed Income Arbitrage", "Fixed Income Arb", "Fixed-Income Arbitrage"]
+      "Fund of Funds": ["Fund of Funds", "Funds of Funds", "Fund-of-Funds", "FoF", "Fund of Hedge Funds"]
+      "Global Macro": ["Global Macro", "Macro"]
+      "Long/Short Equity": ["Long/Short Equity", "Long Short Equity", "Long-Short Equity", "Long/Short Equity Hedge", "Equity Long/Short", "Equity Hedge", "Long Bias"]
+      "Managed Futures": ["Managed Futures", "Managed Futures (CTA)", "CTA", "CTA/Managed Futures", "Commodity Trading Advisor"]
+      "Multi-Strategy": ["Multi-Strategy", "Multi Strategy", "Multi-strategy"]

@@ -1,0 +1,50 @@
+{
+  "project_root_name": "6.7\u590d\u73b0\u53e6\u4e00\u7bc7",
+  "inputs": {
+    "liquidity_xlsx": {
+      "path": "data/raw/liquidity/Sadka-LIQ-factors-1983-2012-WRDS.xlsx",
+      "bytes": 29680,
+      "sha256": "d93a7aa4ecbcdc0785be28454760b99137fb6d3e8800a0bcf67b40b761e9e582"
+    },
+    "fama_french_zip": {
+      "path": "data/raw/external_factors/fama_french/FF3_CSV.zip",
+      "bytes": 13044,
+      "sha256": "14ba9461e8cfef6082c99a74dbad63d90745b7fd5dd24b41285efa4c7aa1d51f"
+    },
+    "hsieh_tf": {
+      "path": "data/raw/external_factors/hsieh/TF-Fac.xls",
+      "bytes": 76800,
+      "sha256": "895958f4028869c640d65c087db60cebfdec3529f69ec72245d5864caeb9d17b"
+    },
+    "fred_DGS10": {
+      "path": "data/raw/external_factors/fred/DGS10.csv",
+      "present": false
+    },
+    "fred_DBAA": {
+      "path": "data/raw/external_factors/fred/DBAA.csv",
+      "present": false
+    },
+    "fred_GS10": {
+      "path": "data/raw/external_factors/fred/GS10.csv",
+      "bytes": 15021,
+      "sha256": "ed908f64fca77e7119365f2e63ca2b99211d402062c62fcb12922c23e62b12a7"
+    },
+    "fred_BAA": {
+      "path": "data/raw/external_factors/fred/BAA.csv",
+      "bytes": 22095,
+      "sha256": "56f1b2b974ad81eacf80d8ece1afa6b65e3470d1661e31368a3f698498f27817"
+    },
+    "tass_manual_exports": {
+      "dir": "data/raw/tass/manual_exports",
+      "files": [
+        "tr_tass_fundinfo.parquet",
+        "tr_tass_returns_1994_2008.parquet"
+      ]
+    }
+  },
+  "wrds": {
+    "attempted": true,
+    "available": false,
+    "reason": "WRDS_USERNAME not set; skipping connection"
+  }
+}

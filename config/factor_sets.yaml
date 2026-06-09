@@ -1,0 +1,8 @@
+sadka_model1:
+  factors: ["MKT-RF", "Liquidity"]
+
+sadka_model2:
+  factors: ["MKT-RF", "SMB", "DTERM", "DCREDIT", "PTFSBD", "PTFSFX", "PTFSCOM", "Liquidity"]
+
+sadka_model2_plus_new:
+  factors: ["MKT-RF", "SMB", "DTERM", "DCREDIT", "PTFSBD", "PTFSFX", "PTFSCOM", "Liquidity", "NEW_FACTOR_1", "NEW_FACTOR_2"]

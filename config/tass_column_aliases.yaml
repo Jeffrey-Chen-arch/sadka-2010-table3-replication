@@ -1,0 +1,12 @@
+returns:
+  fund_id: ["fund_id", "fundno", "fund_number", "lipper_id", "tass_fund_id"]
+  date: ["date", "rdate", "caldt", "return_date", "month"]
+  return: ["return", "ret", "ror", "rate_of_return", "monthly_return"]
+
+fund_info:
+  fund_id: ["fund_id", "fundno", "fund_number", "lipper_id", "tass_fund_id"]
+  style: ["investment_style", "primary_category", "strategy", "style", "category", "fund_category"]
+  currency: ["currency", "currency_code", "curr", "denomination"]
+  reporting_frequency: ["reporting_frequency", "report_freq", "frequency", "frequency_returns"]
+  net_of_fees: ["net_of_fees", "net_return_flag", "returns_net_of_fees"]
+  live_graveyard_status: ["status", "database", "live_graveyard", "graveyard", "fund_status"]

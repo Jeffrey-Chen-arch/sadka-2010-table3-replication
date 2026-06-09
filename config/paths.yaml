@@ -1,0 +1,32 @@
+# Central path registry (relative to project root). Resolved by src/sadka_replication/paths.py.
+project_root: "."
+
+raw:
+  liquidity_xlsx: "data/raw/liquidity/Sadka-LIQ-factors-1983-2012-WRDS.xlsx"
+  ff_dir: "data/raw/external_factors/fama_french"
+  hsieh_dir: "data/raw/external_factors/hsieh"
+  fred_dir: "data/raw/external_factors/fred"
+  tass_manual_exports: "data/raw/tass/manual_exports"
+
+interim:
+  tass_returns_standardized: "data/interim/tass_returns_standardized.parquet"
+  tass_fund_info_standardized: "data/interim/tass_fund_info_standardized.parquet"
+
+processed:
+  liquidity_main: "data/processed/liquidity_main.parquet"
+  factors_main: "data/processed/factors_main.parquet"
+  tass_fund_month_returns: "data/processed/tass_fund_month_returns.parquet"
+  style_portfolio_returns: "data/processed/style_portfolio_returns.parquet"
+
+benchmarks:
+  table1: "data/benchmarks/sadka_table1_style_targets.csv"
+  table2: "data/benchmarks/sadka_table2_corr_targets.csv"
+  table3: "data/benchmarks/sadka_table3_targets.csv"
+
+outputs:
+  logs: "outputs/logs"
+  tables: "outputs/tables"
+  figures: "outputs/figures"
+  workbooks: "outputs/workbooks"
+  memos: "outputs/memos"
+  restricted: "outputs/restricted"

@@ -1,0 +1,10 @@
+factor,source,raw_unit,final_unit,std_1994_2008,scale_decision,coefficient_implication
+MKT-RF,Ken French 3-factor,percent,decimal,0.044339,divided by 100,decimal returns; market beta comparable to paper
+SMB,Ken French 3-factor,percent,decimal,0.03738,divided by 100,decimal returns
+RF,Ken French 3-factor,percent,decimal,0.00141,divided by 100,excess-return construction ONLY; not a Table 3 RHS factor
+DTERM,FRED GS10 (monthly avg),percent yield,percentage points,0.23894,diff of yield; NOT divided by 100,loading is return-per-pp; matches paper
+DCREDIT,FRED BAA-GS10 (monthly avg),percent yield spread,percentage points,0.176267,diff of spread; NOT divided by 100,loading is return-per-pp; matches paper
+PTFSBD,Hsieh TF-Fac,decimal return,decimal (as-read),0.149736,as-read; NOT divided by 100,dividing by 100 would inflate PTFS coefficients 100x
+PTFSFX,Hsieh TF-Fac,decimal return,decimal (as-read),0.199252,as-read; NOT divided by 100,dividing by 100 would inflate PTFS coefficients 100x
+PTFSCOM,Hsieh TF-Fac,decimal return,decimal (as-read),0.137801,as-read; NOT divided by 100,dividing by 100 would inflate PTFS coefficients 100x
+Liquidity,WRDS Variable-Permanent,innovation level,as-is,0.005303,as-is; no AR/flip/scale,small magnitude -> large betas (~0.4-1.5) as in paper

@@ -1,0 +1,23 @@
+style,spec,nobs
+Convertible Arbitrage,model1,180
+Convertible Arbitrage,model2,180
+Dedicated Short Bias,model1,180
+Dedicated Short Bias,model2,180
+Emerging Markets,model1,180
+Emerging Markets,model2,180
+Equity Market Neutral,model1,180
+Equity Market Neutral,model2,180
+Event Driven,model1,180
+Event Driven,model2,180
+Fixed Income Arbitrage,model1,180
+Fixed Income Arbitrage,model2,180
+Fund of Funds,model1,180
+Fund of Funds,model2,180
+Global Macro,model1,180
+Global Macro,model2,180
+Long/Short Equity,model1,180
+Long/Short Equity,model2,180
+Managed Futures,model1,99
+Managed Futures,model2,99
+Multi-Strategy,model1,180
+Multi-Strategy,model2,180

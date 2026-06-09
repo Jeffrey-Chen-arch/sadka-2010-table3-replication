@@ -1,0 +1,4 @@
+field,present,nonmissing_share,recognized_share,filter_applied,rows_before,rows_after,paper_required,paper_faithful_if_missing,assumption,fatal_if_present_but_unrecognized
+reporting_frequency,True,0.9271,0.9974,True,840787,777441,True,False,,True
+currency,True,0.9999,0.6684,True,777441,519638,True,False,,True
+net_of_fees_flag,True,1.0,0.9911,True,519638,515019,True,True,TASS monthly ROR assumed net of fees if no explicit flag,False

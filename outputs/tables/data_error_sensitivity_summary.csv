@@ -1,0 +1,4 @@
+spec,ceiling_decimal,overall_n,fund_months,max_ret_decimal,ConvArb_liq_m2,FixedIncArb_liq_m2,n_pos_sig_m2,liq_sign_match_m2,liq_sig_match_m2,liq_coef_mae_m2,rows_dropped_ceiling
+S00_keep_all_except_sentinels,,8345,501070,312.081,-1.427,-0.399,4,0.818,0.636,0.54,0
+S01_conservative_ceiling20,20.0,8345,501062,18.157,0.755,0.341,6,1.0,0.818,0.232,8
+S02_aggressive_ceiling1,1.0,8345,500991,0.98,0.755,0.197,7,1.0,0.909,0.25,79

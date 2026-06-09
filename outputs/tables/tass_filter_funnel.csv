@@ -1,0 +1,16 @@
+step,description,rows,unique_funds,months
+00,raw returns rows,840794,15980,180
+01,sample 1994-01..2008-12,840794,15980,180
+02,valid numeric return,840794,15980,180
+02b,drop exact numeric sentinels,840787,15980,180
+03,merge fund info,840787,15980,180
+04,monthly reporting,777441,14549,180
+05,USD currency,519638,8700,180
+06,net-of-fees,515019,8638,180
+07,Live + Graveyard kept,515019,8638,180
+08,mapped to 11 styles (strict_11_only),501070,8345,180
+09,drop exact dup fund-months,501070,8345,180
+10,return scale (percent_to_decimal),501070,8345,180
+10c,drop |ret_decimal|>20.0 (data errors),501062,8345,180
+11,merge RF,501062,8345,180
+12,ret_excess (main=subtract_ff_rf),501062,8345,180

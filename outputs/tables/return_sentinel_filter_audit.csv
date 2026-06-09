@@ -1,0 +1,2 @@
+sentinels,rows_dropped,note
+"[-99, -99.0, -99.99, -999, 999, 9999]",7,exact-match only; magnitude-based dropping NOT applied; legit extremes preserved

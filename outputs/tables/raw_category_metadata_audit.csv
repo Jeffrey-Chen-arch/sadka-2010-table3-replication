@@ -1,0 +1,15 @@
+investment_style_raw,n_funds,n_usd,mapped_strict,mapped_expanded,note
+Undefined,13542,8669,,,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Fund of Funds,7337,3352,Fund of Funds,Fund of Funds,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Long/Short Equity Hedge,5685,3546,Long/Short Equity,Long/Short Equity,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Multi-Strategy,3093,1191,Multi-Strategy,Multi-Strategy,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Other,1871,906,,,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Global Macro,1337,835,Global Macro,Global Macro,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Emerging Markets,1236,1008,Emerging Markets,Emerging Markets,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Event Driven,1008,818,Event Driven,Event Driven,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Equity Market Neutral,975,570,Equity Market Neutral,Equity Market Neutral,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Fixed Income Arbitrage,598,339,Fixed Income Arbitrage,Fixed Income Arbitrage,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Convertible Arbitrage,372,296,Convertible Arbitrage,Convertible Arbitrage,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Options Strategy,127,77,,,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Dedicated Short Bias,65,59,Dedicated Short Bias,Dedicated Short Bias,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping
+Managed Futures,50,15,Managed Futures,Managed Futures,fund names anonymized (Fund-N) -> cannot keyword-reclassify; no force-mapping

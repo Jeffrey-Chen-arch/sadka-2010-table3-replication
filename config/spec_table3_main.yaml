@@ -1,0 +1,129 @@
+project:
+  name: "sadka_2010_jfe_table3_replication"
+  sample_start: "1994-01"
+  sample_end: "2008-12"
+  output_version: "main"
+
+sample:
+  include_live: true
+  include_graveyard: true
+  reporting_frequency: "monthly"
+  currency: "USD"
+  keep_extreme_returns: true
+  winsorize: false
+  drop_backfill: false
+  min_history_months_for_table3: null
+
+returns:
+  final_unit: "decimal"
+  raw_return_scale: "auto"
+  main_excess_return_mode: "subtract_ff_rf"
+  alternative_excess_return_modes:
+    - "as_reported"
+  # EXACT-match missing/sentinel codes to drop (NOT magnitude-based; 2006-2008 extremes kept)
+  missing_sentinel_values: [-99, -99.0, -99.99, -999, 999, 9999]
+  # If live/graveyard/source files imply different percent-vs-decimal scales -> STOP (high-risk)
+  scale_inconsistency_behavior: "stop"
+  # currency/reporting_frequency present-but-no-recognized-values always STOP;
+  # net_of_fees present-but-unrecognized: "warn" (TASS ROR assumed net) or "stop"
+  net_of_fees_unrecognized_behavior: "warn"
+  # Drop evident data-entry errors: |monthly return| > this (decimal). MAIN = 20.0 (>2000%/mo):
+  # preserves Sadka's published max (13.245) but removes impossible modern-vintage values
+  # (e.g. +31,208%/mo). Sensitivity: null = paper-faithful keep-all (S00); 1.0 = aggressive
+  # (S02). See data_error_sensitivity_summary.csv. Sadka notes excluding extremes doesn't
+  # change results.
+  data_error_ceiling_decimal: 20.0
+
+fund_info_conflicts:
+  canonical_style_conflict_behavior: "stop"   # style decides portfolio membership -> must stop
+  nonstyle_conflict_behavior: "warn"          # currency/status disagreements only warn
+
+styles:
+  canonical_count: 11
+  weighting: "equal"
+  include_fund_of_funds: true
+  style_map_file: "config/style_map.yaml"
+  style_mapping_variant: "strict_11_only"   # main; switch to expanded_alias_map only if needed
+  # Modern LSEG TASS adds non-Sadka categories (Other/Options Strategy/Undefined) that the
+  # 11-style universe legitimately excludes (~2.7%); 0.05 guards real mapping failures while
+  # allowing these documented drops (see unmapped_styles.csv).
+  stop_if_unmapped_share_exceeds: 0.05
+  mapping_audit_output: "outputs/tables/style_mapping_audit.csv"
+
+deduplication:
+  fund_month_duplicates: "exact_duplicate_only"
+  live_graveyard_overlap: "drop_exact_duplicate_else_log_conflict"
+  share_class_deduplication: false           # not in main spec; diagnostic only
+  conflict_behavior: "stop"                  # main: STOP on non-exact fund-month conflicts
+  conflict_output: "outputs/tables/duplicate_fund_month_conflicts.csv"
+
+liquidity:
+  source_file: "data/raw/liquidity/Sadka-LIQ-factors-1983-2012-WRDS.xlsx"
+  sheet_name: "Sheet1"
+  date_col: "Date"
+  main_col: "Variable-Permanent"
+  secondary_col: "Fixed-Transitory"
+  date_format: "YYYYMM"
+  baseline_transform: "as_is"
+  final_name: "Liquidity"
+  sanity_check_months:
+    "1998-09": "negative"
+    "2001-01": "negative"
+    "2007-08": "negative"
+    "2008-09": "negative"
+
+external_factors:
+  fama_french:
+    source: "ken_french_data_library"
+    prefer_historical_archive: true
+    fallback_to_current: true
+    convert_percent_to_decimal: true
+    required_columns:
+      - "Mkt-RF"
+      - "SMB"
+      - "RF"
+
+  hsieh:
+    source: "david_hsieh_data_library"
+    trend_factor_columns:
+      PTFSBD: ["PTFSBD", "Bond Trend-Following Factor", "BD"]
+      PTFSFX: ["PTFSFX", "Currency Trend-Following Factor", "FX"]
+      PTFSCOM: ["PTFSCOM", "Commodity Trend-Following Factor", "COM"]
+    convert_percent_to_decimal: "auto"
+
+  term_credit:
+    preferred_source_order:
+      - "hsieh_or_precomputed_if_available"
+      - "fred_daily_eom"
+      - "fred_monthly_average"
+    fred_daily_eom:
+      ten_year: "DGS10"
+      baa: "DBAA"
+      units: "percentage_points"
+      dterm: "diff(last_available_DGS10_each_month)"
+      dcredit: "diff(last_available_DBAA_each_month - last_available_DGS10_each_month)"
+    fred_monthly_average:
+      ten_year: "GS10"
+      baa: "BAA"
+      units: "percentage_points"
+
+regression:
+  tstat_type_main: "ols"
+  add_constant: true
+  missing: "drop"
+  model1_terms:
+    - "MKT-RF"
+    - "Liquidity"
+  model2_terms:
+    - "MKT-RF"
+    - "SMB"
+    - "DTERM"
+    - "DCREDIT"
+    - "PTFSBD"
+    - "PTFSFX"
+    - "PTFSCOM"
+    - "Liquidity"
+
+comparison:
+  target_file: "data/benchmarks/sadka_table3_targets.csv"
+  significance_threshold: 1.96

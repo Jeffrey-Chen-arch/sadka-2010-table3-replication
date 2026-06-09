@@ -1,0 +1,22 @@
+[project]
+name = "sadka-replication"
+version = "0.1.0"
+description = "Closest-feasible replication of Sadka (2010 JFE) Table 3"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sadka*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: requires raw restricted/public data files not included in the committable zip",
+]
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,3 @@
+currency_policy,overall_n,fund_months,max_ret_decimal,ConvArb_liq_m2,FixedIncArb_liq_m2,n_pos_sig_m2,liq_sign_match_m2,liq_sig_match_m2,liq_coef_mae_m2,rows_dropped_ceiling
+USD_only (main),8345,501062,18.157,0.755,0.341,6,1.0,0.818,0.232,8
+all_currencies,13521,732423,19.828,0.704,0.39,7,0.818,0.909,0.291,63

@@ -1,0 +1,11 @@
+{
+  "stage": "step08_outputs",
+  "python_executable": "C:\\Users\\<USER>\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "python_version": "3.12.10",
+  "python_version_full": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "package_lock_file": "outputs/logs/pip_freeze_step08_outputs_sanitized.txt",
+  "table3_complete": true,
+  "workbook": "sadka_table3_summary.xlsx",
+  "memo": "sadka_table3_replication_memo_for_prof.md"
+}

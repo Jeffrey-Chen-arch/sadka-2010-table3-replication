@@ -1,0 +1,8 @@
+{
+  "n_specs": 72,
+  "n_ok": 36,
+  "allowed_main_liquidity_variants": [
+    "as_is"
+  ],
+  "rule": "CONDITIONAL ON THE ACTIVE DATA-ERROR-CLEANED SAMPLE: closest-feasible main only from allowed (non-diagnostic) specs; diagnostic liquidity variants (flipped/ar3_resid/...) reported but never main. Data-error policy is varied separately in data_error_sensitivity_summary.csv, not inside this grid."
+}

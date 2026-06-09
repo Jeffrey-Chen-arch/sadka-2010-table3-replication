@@ -1,0 +1,38 @@
+# Column contracts asserted by the pipeline.
+
+liquidity_raw_xlsx:
+  required: ["Date", "Fixed-Transitory", "Variable-Permanent"]
+
+tass_returns_standardized:
+  required: ["fund_id", "month", "ret_raw", "source_status"]
+
+tass_fund_info_standardized:
+  required:
+    - "fund_id"
+    - "fund_name"
+    - "investment_style_raw"
+    - "currency"
+    - "reporting_frequency"
+    - "net_of_fees_flag"
+    - "live_graveyard_status"
+    - "inception_date"
+    - "end_date"
+
+factors_main:
+  required:
+    - "month"
+    - "MKT-RF"
+    - "SMB"
+    - "RF"
+    - "DTERM"
+    - "DCREDIT"
+    - "PTFSBD"
+    - "PTFSFX"
+    - "PTFSCOM"
+    - "Liquidity"
+  n_months: 180
+  month_min: "1994-01-31"
+  month_max: "2008-12-31"
+
+style_portfolio_returns:
+  required: ["month", "style", "style_ret", "n_funds", "n_obs"]

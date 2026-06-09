@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.85cm]{geometry}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\renewcommand{\arraystretch}{1.04}
+
+\title{\vspace{-1.6em}Closest-feasible replication of Sadka (2010, JFE) Table III}
+\author{Jiahui (Jeffrey) Chen}
+\date{June 9, 2026}
+
+\begin{document}
+\maketitle
+\vspace{-2.2em}
+
+\section*{1.\ \ What I set out to do, and how I'd frame the result}
+I tried to reproduce \textbf{Table III} of Sadka (2010, JFE) --- the time-series regressions of
+11 equal-weighted hedge-fund style portfolios on the Fung--Hsieh factors and the Sadka liquidity
+factor --- as a clean baseline we could later extend with our own factors. I want to be honest up
+front: this is a \textbf{strong closest-feasible replication on the current WRDS/LSEG TASS vintage},
+\emph{not} an exact reproduction of Sadka's 2009-era TASS sample. The sign pattern and the main
+qualitative contrasts come through clearly; the magnitudes and counts differ, and I explain why.
+
+\section*{2.\ \ Data and specification (kept faithful to the table)}
+Monthly TASS returns, Jan 1994--Dec 2008; Live + Graveyard; monthly, net-of-fees, USD, excess of
+the risk-free rate; 11 self-classified styles; equal-weighted monthly style portfolios; OLS
+regressions on (M1) MKT-RF + Liquidity and (M2) the full Fung--Hsieh seven factors + Liquidity. I
+deliberately kept Table IV's rolling-beta / decile rules \emph{out}.
+
+\section*{3.\ \ Step by step: what I did, and what came out}
+\textbf{(a) Liquidity factor.} \emph{Input:} the WRDS Sadka file (permanent-variable component),
+used as-is. \emph{Output:} the crisis months are all negative, matching Figure 1 --- 1998-09
+$=-0.016$, 2001-01 $=-0.012$, 2007-08 $=-0.012$, 2008-09 $=-0.031$. This passed, so I kept it as the
+main factor.
+
+\textbf{(b) Fung--Hsieh factors + Table II.} \emph{Input:} Ken French (MKT-RF, SMB), David Hsieh
+(PTFS), FRED (GS10, BAA for $\Delta$TERM/$\Delta$CREDIT). \emph{Output:} all 28 pairwise
+correlations land within 0.05 of the paper, with the right signs. The key liquidity row:
+
+{\footnotesize
+\begin{center}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Liquidity $\times$ & MKT-RF & SMB & $\Delta$TERM & $\Delta$CREDIT & PTFSBD & PTFSFX & PTFSCOM \\
+\midrule
+Sadka & 0.13 & 0.07 & 0.08 & $-0.34$ & $-0.01$ & $-0.10$ & $-0.08$ \\
+Mine  & 0.14 & 0.08 & 0.09 & $-0.39$ & $-0.05$ & $-0.13$ & $-0.09$ \\
+\bottomrule
+\end{tabular}
+\end{center}}
+
+\textbf{(c) TASS sample.} \emph{Input:} I pulled the current LSEG schema (\texttt{tr\_tass}):
+\texttt{productperformance} (returns) and \texttt{productdetails} (style, currency, gross/net,
+live/graveyard). \emph{Output (filter funnel):} 840{,}794 returns / 15{,}980 funds $\rightarrow$
+monthly 14{,}549 $\rightarrow$ USD 8{,}700 $\rightarrow$ net 8{,}638 $\rightarrow$ 11-style
+\textbf{8{,}345 funds} (501k fund-months). All 11 styles present; Fund of Funds kept; Live and
+Graveyard both present.
+
+\section*{4.\ \ Table III: Sadka's original vs.\ my replication}
+The centerpiece is the liquidity loading. I show both models, each as coefficient with
+[\,$t$\,]; my numbers use the conservative data screen (S01, see \S5).
+
+{\footnotesize
+\begin{center}
+\begin{tabular}{l rr rr}
+\toprule
+ & \multicolumn{2}{c}{Model 1: $\beta_{\text{LIQ}}$ [\,$t$\,]} & \multicolumn{2}{c}{Model 2: $\beta_{\text{LIQ}}$ [\,$t$\,]} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Style & Sadka & Mine & Sadka & Mine \\
+\midrule
+Convertible Arbitrage   & 1.28 [6.1] & 1.39 [6.5] & 0.78 [4.2] & 0.76 [3.9] \\
+Dedicated Short Bias     & 0.33 [0.9] & 0.33 [1.0] & $-0.16$ [$-0.5$] & $-0.14$ [$-0.5$] \\
+Emerging Markets         & 1.53 [3.3] & 1.42 [3.1] & 1.13 [2.4] & 0.95 [2.0] \\
+Equity Market Neutral    & 0.70 [5.2] & 0.44 [3.3] & 0.47 [3.6] & 0.33 [2.3] \\
+Event Driven             & 0.88 [5.7] & 0.85 [4.7] & 0.53 [4.1] & 0.53 [3.0] \\
+Fixed Income Arbitrage   & 0.94 [4.9] & 0.68 [2.4] & 0.39 [2.5] & 0.34 [1.2] \\
+Fund of Funds            & 1.09 [5.1] & 0.65 [3.2] & 0.74 [3.7] & 0.39 [2.0] \\
+Global Macro             & 0.42 [1.8] & 0.15 [0.6] & 0.38 [1.7] & 0.17 [0.7] \\
+Long/Short Equity        & 0.91 [3.8] & 0.45 [2.1] & 0.81 [3.7] & 0.36 [2.0] \\
+Managed Futures          & 0.34 [0.8] & 0.20 [0.4] & 0.39 [1.0] & 0.30 [0.5] \\
+Multi-Strategy           & 1.53 [5.1] & 0.57 [4.1] & 1.42 [4.9] & 0.39 [2.7] \\
+\bottomrule
+\end{tabular}
+\end{center}}
+
+What I see: \textbf{all 11 liquidity signs match}. Strictly at 5\% ($|t|\ge1.96$) in Model 2,
+six styles are clearly positive and significant (Convertible Arbitrage, Emerging Markets, Equity
+Market Neutral, Event Driven, Long/Short Equity, Multi-Strategy); Fund of Funds sits right at the
+cutoff; Fixed Income Arbitrage is positive but short of significance; Global Macro and Managed
+Futures are weak --- as in the paper. \textbf{Dedicated Short Bias is negative and insignificant},
+and its market beta is $-0.88$ (Sadka $-0.97$), a check I leaned on. So the qualitative result
+reproduces; I'd flag that several \emph{magnitudes} (Multi-Strategy, Long/Short, Fund of Funds)
+come out smaller than Sadka's.
+
+\section*{5.\ \ Sensitivity and the honest caveats}
+\textbf{Data-error screen.} The raw current-vintage data contain a few impossible records (a
+$+31{,}208\%$ monthly return, exact $99.0$ sentinels). I report three screens and make the
+conservative one (S01) the main version. S01 removes only 8 observations and does \emph{not} delete
+returns of the same order of magnitude as Sadka's published extremes (my post-screen max is 18.16
+vs his 13.245):
+
+{\footnotesize
+\begin{center}
+\begin{tabular}{l r r r r r}
+\toprule
+Screen & Funds & Max ret & Conv.Arb $\beta_{\text{LIQ}}$(M2) & FI.Arb $\beta_{\text{LIQ}}$(M2) & sign-match \\
+\midrule
+S00 keep-all (sentinels only) & 8{,}345 & 312.08 & $-1.43$ & $-0.40$ & 9/11 \\
+\textbf{S01 conservative ($>$2000\%/mo)} & 8{,}345 & 18.16 & 0.76 & 0.34 & 11/11 \\
+S02 aggressive ($>$100\%/mo) & 8{,}345 & 0.98 & 0.76 & 0.20 & 11/11 \\
+\bottomrule
+\end{tabular}
+\end{center}}
+
+\textbf{Sample counts.} My Overall N is 8{,}345 vs Sadka's 12{,}929. The gap is mostly the USD
+filter: with all currencies I get 13{,}521 ($\approx$ his total), but I keep USD-only because the
+paper specifies USD returns. \textbf{Managed Futures} is the weakest spot --- only $\sim$17 funds
+carry that primary category in this vintage (Sadka had 964), and fund names are anonymized, so I
+\emph{deliberately do not} force-map ``Other''/``Undefined'' funds into it. A few style counts vs
+Sadka: Fund of Funds 2{,}458/4{,}268; Long/Short 2{,}509/3{,}574; Multi-Strategy 631/1{,}177.
+
+\section*{6.\ \ My read}
+I'd describe this as a strong, auditable, closest-feasible replication. The liquidity-risk pattern
+that Sadka's Table III is about is clearly there on a completely different data vintage, which to
+me is the reassuring part. I would not call it an exact match --- the magnitudes are softer and the
+sample is smaller --- but every qualitative red line holds, and the code is set up so we can drop
+additional factors straight into the same style-level regressions. Full numbers, all three screens,
+and the audit trail are in the accompanying workbook.
+
+\end{document}

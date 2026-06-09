@@ -1,0 +1,20 @@
+{
+  "return_excess_mode": "subtract_ff_rf",
+  "style_mapping_variant": "strict_11_only",
+  "liquidity_variant": "as_is",
+  "term_credit_source": "fred_monthly_average",
+  "tstat_type": "ols",
+  "status": "ok",
+  "term_credit_source_used": "fred_monthly_average",
+  "is_paper_faithful": true,
+  "is_diagnostic": false,
+  "is_allowed_main": true,
+  "tier": "tier1_allowed",
+  "coef_mae_all": 0.05253334953084138,
+  "tstat_mae_all": 1.1586204697234481,
+  "r2_mae": 0.09436522161395482,
+  "liq_coef_mae": 0.2543405074550073,
+  "liq_tstat_mae": 1.0900313132167525,
+  "liq_sign_match_rate": 1.0,
+  "liq_sig_match_rate": 0.9090909090909091
+}

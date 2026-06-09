@@ -1,0 +1,15 @@
+raw_style,mapped_style,n_rows,mapping_variant,mapping_rule
+Fund of Funds,Fund of Funds,157701,strict_11_only,mapped
+Long/Short Equity Hedge,Long/Short Equity,151294,strict_11_only,mapped
+Event Driven,Event Driven,45094,strict_11_only,mapped
+Emerging Markets,Emerging Markets,35346,strict_11_only,mapped
+Multi-Strategy,Multi-Strategy,32518,strict_11_only,mapped
+Global Macro,Global Macro,22058,strict_11_only,mapped
+Equity Market Neutral,Equity Market Neutral,21884,strict_11_only,mapped
+Fixed Income Arbitrage,Fixed Income Arbitrage,16464,strict_11_only,mapped
+Convertible Arbitrage,Convertible Arbitrage,14982,strict_11_only,mapped
+Other,,12242,strict_11_only,UNMAPPED
+Dedicated Short Bias,Dedicated Short Bias,3501,strict_11_only,mapped
+Options Strategy,,1625,strict_11_only,UNMAPPED
+Managed Futures,Managed Futures,228,strict_11_only,mapped
+Undefined,,82,strict_11_only,UNMAPPED

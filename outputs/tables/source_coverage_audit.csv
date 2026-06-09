@@ -1,0 +1,2 @@
+has_live,has_graveyard,paper_requires_both,note
+True,True,True,"if not both, result is NOT paper-faithful"

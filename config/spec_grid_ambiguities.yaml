@@ -1,0 +1,85 @@
+# The grid that Step 07 ACTUALLY runs (drives scripts/07_run_spec_grid.py).
+# The tier1/tier2/forbidden sections below document the broader ambiguity space and which
+# specs may/may not become the main closest-feasible spec.
+implemented_grid:
+  return_excess_mode: ["subtract_ff_rf", "as_reported"]
+  style_mapping_variant: ["strict_11_only", "expanded_alias_map"]
+  liquidity_variant: ["as_is", "flipped", "ar3_resid"]   # as_is = allowed main; others diagnostic-only
+  term_credit_source: ["fred_monthly_average", "fred_daily_eom"]  # daily skipped if absent
+  tstat_type: ["ols", "hac_3", "hac_6"]
+
+# Which liquidity variants may ever be the main/closest-feasible spec (others are diagnostic).
+allowed_main_liquidity_variants: ["as_is"]
+
+tier1_academically_plausible:
+  return_excess_mode:
+    - "subtract_ff_rf"
+    - "as_reported"
+
+  liquidity_transform:
+    - "as_is"
+    - "flipped"
+    - "times_100"
+    - "divide_100"
+
+  term_credit_source:
+    - "hsieh_or_precomputed_if_available"
+    - "fred_daily_eom"
+    - "fred_monthly_average"
+
+  term_credit_units:
+    - "percentage_points"
+    - "decimal"
+
+  hsieh_trend_scale:
+    - "auto"
+    - "percent_to_decimal"
+    - "as_read"
+
+  date_alignment:
+    - "same_month"
+    - "factor_lag1"
+    - "factor_lead1"
+
+  tstat_type:
+    - "ols"
+    - "hac_3"
+    - "hac_6"
+
+tier2_diagnostic_only_not_main:
+  liquidity_transform:
+    - "zscore"
+    - "ar3_resid_neg"
+
+  winsorize_returns:
+    - false
+    - "p0.5_p99.5"
+    - "p1_p99"
+
+  drop_2006_2008_extremes:
+    - false
+    - true
+
+  live_only:
+    - false
+    - true
+
+  exclude_fund_of_funds:
+    - false
+    - true
+
+forbidden_as_main:
+  - "live_only=true"
+  - "exclude_fund_of_funds=true"
+  - "winsorize_returns != false"
+  - "drop_2006_2008_extremes=true"
+  - "table4_min_history_rules_for_table3"
+  - "value_weighted_style_returns"
+  - "rolling_beta_decile_sort"
+
+# Main spec selection rule:
+# 1. Always report paper-faithful main spec first.
+# 2. If paper-faithful is close enough, it remains main.
+# 3. If not close, choose closest-feasible only from tier1_academically_plausible.
+# 4. Tier2 specs may appear only in appendix/diagnostics.
+# 5. Forbidden specs cannot be main, even if numerically closer.

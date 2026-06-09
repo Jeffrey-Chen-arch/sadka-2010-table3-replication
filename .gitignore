@@ -1,0 +1,65 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Editor / tooling local state
+.claude/
+
+# Secrets / credentials
+.env
+.env.*
+*.pgpass
+
+# ---- Restricted / raw data: ignore CONTENTS, keep structure + READMEs ----
+data/raw/*
+!data/raw/README.md
+!data/raw/tass/
+data/raw/tass/*
+!data/raw/tass/README.md
+!data/raw/tass/.gitkeep
+!data/raw/tass/manual_exports/
+data/raw/tass/manual_exports/*
+!data/raw/tass/manual_exports/.gitkeep
+!data/raw/liquidity/
+data/raw/liquidity/*
+!data/raw/liquidity/.gitkeep
+!data/raw/external_factors/
+data/raw/external_factors/*
+!data/raw/external_factors/.gitkeep
+!data/raw/external_factors/fred/
+data/raw/external_factors/fred/*
+!data/raw/external_factors/fred/README.md
+!data/raw/external_factors/fred/.gitkeep
+
+# Derived / restricted
+data/interim/
+data/processed/
+outputs/restricted/
+*.parquet
+*.feather
+*.pkl
+*.dta
+
+# Copyrighted / restricted source materials and local snapshots (never commit)
+/Liquidity risk and the cross-section of hedge-fund returns$.pdf
+/Sadka-LIQ-factors-1983-2012-WRDS.xlsx
+/paper_text.txt
+/docs/paper_text.txt
+/deliverables/
+
+# Provenance: raw (local-path-bearing) versions; only sanitized are committed
+outputs/logs/run_manifest.json
+outputs/logs/pip_freeze_*.txt
+outputs/logs/*raw*
+outputs/logs/*wrds*
+outputs/logs/*.log
+!outputs/logs/run_manifest_sanitized.json
+!outputs/logs/pip_freeze_*_sanitized.txt
+
+# Committed outputs: aggregate tables, figures, workbook, memos (no fund-level data).
