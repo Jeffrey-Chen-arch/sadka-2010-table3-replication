@@ -63,3 +63,11 @@ outputs/logs/*.log
 !outputs/logs/pip_freeze_*_sanitized.txt
 
 # Committed outputs: aggregate tables, figures, workbook, memos (no fund-level data).
+
+# LaTeX build artifacts
+*.aux
+*.out
+*.toc
+*.synctex.gz
+texput.*
+docs/*.log
