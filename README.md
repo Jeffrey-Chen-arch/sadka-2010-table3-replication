@@ -1,15 +1,15 @@
 # Sadka (2010, JFE) Table III — replication (current WRDS/LSEG TASS vintage)
 
-A clean, auditable replication of **Table III** of Ronnie Sadka, *"Liquidity risk and the
-cross-section of hedge-fund returns,"* **JFE 98 (2010)** — the time-series regressions of 11
+A clean, auditable **closest-feasible** replication of **Table III** of Ronnie Sadka, *"Liquidity
+risk and the cross-section of hedge-fund returns,"* **JFE 98 (2010)** — the time-series regressions of 11
 equal-weighted hedge-fund **style** portfolios on the Fung–Hsieh seven factors and the Sadka
 liquidity factor (Jan 1994 – Dec 2008).
 
 > **Framing (honest):** this is a **closest-feasible replication on the current WRDS/LSEG TASS
-> vintage**, *not* an exact reproduction of Sadka's 2009-era TASS sample. Several attempts were
-> made under different reasonable data choices; the version reported is the one that came closest.
-> The qualitative pattern is close; magnitudes and sample counts differ, and each difference is
-> quantified (see `docs/memo_sadka_table3.tex` and `outputs/`).
+> vintage**, *not* an exact reproduction of Sadka's 2009-era TASS sample. I report the
+> paper-faithful keep-all version alongside two documented data-error screens; the main version
+> uses the conservative screen. The qualitative pattern is close; magnitudes and sample counts
+> differ, and each difference is quantified (see `docs/memo_sadka_table3.pdf` and `outputs/`).
 
 ## Result (Model 2 liquidity loading)
 - **All 11 Model-2 liquidity-loading signs match** the paper; six styles are clearly positive and

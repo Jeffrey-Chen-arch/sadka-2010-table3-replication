@@ -1,12 +1,12 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1.85cm]{geometry}
+\documentclass[10pt]{article}
+\usepackage[margin=1.5cm]{geometry}
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{3pt}
-\renewcommand{\arraystretch}{1.04}
+\setlength{\parskip}{2pt}
+\renewcommand{\arraystretch}{1.0}
 
 \title{\vspace{-1.6em}Replicating Sadka (2010, JFE) Table III on current WRDS/LSEG TASS data}
 \author{Jiahui (Jeffrey) Chen}
@@ -20,11 +20,13 @@
 I set out to replicate Table III of Sadka (2010, JFE) --- the time-series regressions of 11
 equal-weighted hedge-fund style portfolios on the Fung--Hsieh factors and the Sadka liquidity
 factor --- using the current WRDS/LSEG TASS vintage, with the aim of building a clean style-level
-baseline that could later be extended with additional factors. I made several attempts under
-different reasonable data choices; the numbers reported here are from the specification that came
-closest to the paper. I would not describe this as an exact reproduction of Sadka's original
-2009-era TASS sample. The main qualitative pattern is close, but the sample counts and several
-coefficient magnitudes differ, and I have tried to be explicit about why.
+baseline that could later be extended with additional factors. I report the paper-faithful
+keep-all version alongside two documented data-error screens; the main closest-feasible version
+uses the conservative screen, which removes only clearly impossible modern-vintage return records
+while preserving extreme returns of the same order of magnitude as those reported by Sadka. I
+would not describe this as an exact reproduction of Sadka's original 2009-era TASS sample. The
+main qualitative pattern is close, but the sample counts and several coefficient magnitudes
+differ, and I have tried to be explicit about why.
 
 \section*{2.\ \ Data and specification}
 Monthly TASS returns, Jan 1994--Dec 2008; Live + Graveyard; monthly, net-of-fees, USD, excess of
@@ -60,7 +62,7 @@ monthly 14{,}549 $\rightarrow$ USD 8{,}700 $\rightarrow$ net 8{,}638 $\rightarro
 8{,}345 funds (501k fund-months). All 11 styles present; Fund of Funds retained; Live and
 Graveyard both present.
 
-\section*{4.\ \ Table III: original vs.\ replication}
+\section*{4.\ \ Table III liquidity loadings: original vs.\ replication}
 Both models, each reported as the liquidity coefficient with [\,$t$\,]; the replication column
 uses the conservative data screen (S01, see \S5).
 
@@ -119,7 +121,8 @@ S02 aggressive ($>$100\%/mo) & 8{,}345 & 0.98 & 0.76 & 0.20 & 11/11 \\
 \textbf{Sample counts.} The Overall N is 8{,}345, versus Sadka's 12{,}929. The gap is largely the
 USD filter: with all currencies the count is 13{,}521 ($\approx$ his total), but I keep USD-only
 because the paper specifies USD returns. \textbf{Managed Futures} is the largest coverage caveat
---- only about 17 funds carry that primary category in this vintage (Sadka had 964), and fund
+--- only about 17 funds carry that primary category in the current 1994--2008 LSEG vintage before
+the final USD/net/style filters, and only 3 remain in the final USD sample (Sadka had 964); fund
 names are anonymized, so I do not force-map ``Other''/``Undefined'' funds into it. A few style
 counts (replication vs Sadka): Fund of Funds 2{,}458/4{,}268; Long/Short 2{,}509/3{,}574;
 Multi-Strategy 631/1{,}177.
