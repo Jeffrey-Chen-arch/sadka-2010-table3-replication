@@ -5,8 +5,8 @@ current LSEG vintage runs to ~2026); run_replication.py caps its own sample at 2
 chooses its windows, so one pull serves both. Columns are aliased to the names the pipeline recognizes.
 
 Run:
-    # PowerShell:  $env:WRDS_USER="you"; $env:WRDS_PASS="pw"; python wrds_pull.py
-    # bash:        WRDS_USER=you WRDS_PASS=pw python wrds_pull.py
+    # PowerShell:  $env:WRDS_USER="<your_wrds_username>"; $env:WRDS_PASS="<your_wrds_password>"; python wrds_pull.py
+    # bash:        WRDS_USER=<your_wrds_username> WRDS_PASS=<your_wrds_password> python wrds_pull.py
 """
 import os
 

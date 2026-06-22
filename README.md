@@ -47,8 +47,8 @@ Other folders: `config/` (specs + style map), `data/benchmarks/` (Sadka's publis
 pip install -r requirements.txt && pip install -e .
 
 # 1) one-time: pull TASS (needs a WRDS account)
-#    PowerShell:  $env:WRDS_USER="you"; $env:WRDS_PASS="pw"; python wrds_pull.py
-#    bash:        WRDS_USER=you WRDS_PASS=pw python wrds_pull.py
+#    PowerShell:  $env:WRDS_USER="<your_wrds_username>"; $env:WRDS_PASS="<your_wrds_password>"; python wrds_pull.py
+#    bash:        WRDS_USER=<your_wrds_username> WRDS_PASS=<your_wrds_password> python wrds_pull.py
 
 # 2) replication (1994-2008 Table III)
 python run_replication.py --through 09
